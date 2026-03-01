@@ -5,8 +5,12 @@ require('dotenv').config(); // load .env variables
 // const db = require('./init/firebase'); // Firestore instance
 const cors = require('cors');
 const admin = require("firebase-admin");
-const serviceAccount = require("./init/serviceAccountKey.json");
-admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+// const serviceAccount = require("./init/serviceAccountKey.json");
+admin.initializeApp({
+  credential: admin.credential.cert(
+    JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
+  ),
+});
 const db = admin.firestore();
 
 const app = express();
