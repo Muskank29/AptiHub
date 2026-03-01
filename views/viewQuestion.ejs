@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Questions - AptiHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4 text-center">All Questions</h2>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Question</th>
+      <th>Difficulty</th>
+      <th>Correct Answer</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% allQuestions.forEach(q => { %>
+      <tr>
+        <td><%= q.topic %></td>
+        <td><%= q.question %></td>
+        <td><%= q.difficulty %></td>
+        <td><%= q.correctAnswer %></td>
+        <td><a href="/admin/delete-question/<%= q.id %>" class="btn btn-danger btn-sm">Delete</a></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+    <a href="/admin/dashboard" class="d-block mt-3 text-center">← Back to Dashboard</a>
+  </div>
+
+  <script type="module">
+    import { db } from '/js/firebase.js';
+    import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+
+    const tableBody = document.getElementById('questionsTableBody');
+
+    async function loadQuestions() {
+      tableBody.innerHTML = ""; // Clear table
+      try {
+        const querySnapshot = await getDocs(collection(db, "questions"));
+        let count = 1;
+        querySnapshot.forEach((doc) => {
+          const q = doc.data();
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${count++}</td>
+            <td>${q.question}</td>
+            <td>
+              A: ${q.options.A} <br>
+              B: ${q.options.B} <br>
+              C: ${q.options.C} <br>
+              D: ${q.options.D}
+            </td>
+            <td>${q.correctAnswer}</td>
+            <td>${q.marks}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      } catch (error) {
+        alert("Error loading questions: " + error.message);
+      }
+    }
+
+    // Load questions when page loads
+    loadQuestions();
+  </script>
+</body>
+</html> 
+
+

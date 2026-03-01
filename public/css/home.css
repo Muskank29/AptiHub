@@ -1,0 +1,120 @@
+/* ===== Base Layout ===== */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top, #0a0a0a 0%, #000000 100%);
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* move content upward */
+  padding-top: 80px; /* adjust upward position */
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* ===== Glassmorphism Card ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 123, 255, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 30px rgba(0, 123, 255, 0.15);
+  width: 100%;
+  max-width: 500px;
+}
+
+.glass:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(0, 123, 255, 0.4);
+}
+
+/* ===== Glowing Portal Name ===== */
+.portal-name {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00aaff, #007bff, #00e5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(0, 170, 255, 0.4);
+  letter-spacing: 1px;
+  position: relative;
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+/* Make “Hub” stand out slightly */
+.portal-name span {
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Subtitle ===== */
+.sub-text {
+  color: #d0d0d0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+/* ===== Buttons ===== */
+.btn-custom {
+  background-color: transparent;
+  border: 2px solid #00aaff;
+  color: #00aaff;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #00aaff;
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+}
+
+.btn-blue {
+  background-color: #007bff;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.btn-blue:hover {
+  background-color: #009dff;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.7);
+  transform: scale(1.03);
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px #00aaff; }
+  50% { text-shadow: 0 0 25px #00e5ff, 0 0 35px #007bff; }
+  100% { text-shadow: 0 0 10px #00aaff; }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .card {
+    padding: 2rem;
+    width: 90%;
+  }
+  .portal-name {
+    font-size: 2.2rem;
+  }
+}

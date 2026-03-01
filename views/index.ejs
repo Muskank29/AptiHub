@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AptiHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/home.css">
+  <!-- Firebase SDK scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+
+  <!-- Your Firebase JS code -->
+  <script src="/js/firebase.js"></script>
+</head>
+<body>
+
+  <!-- Firebase SDKs -->
+    <!-- You MUST include these scripts to use Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    
+  <div class="hero d-flex justify-content-center align-items-center">
+    <div class="card p-5 text-center shadow-lg glass">
+      
+      <!-- 🔹 Improved AptiHub Title -->
+      <h1 class="mb-3 fw-bold portal-name">Apti<span>Hub</span></h1>
+
+      <p class="lead mb-4 sub-text">Sharpen your aptitude skills and crack your dream placement!</p>
+
+      <div class="d-grid gap-3 col-10 mx-auto">
+        <a href="/admin/login" class="btn btn-custom btn-lg fw-semibold">Admin Login</a>
+        <a href="/user/login" class="btn btn-custom btn-lg fw-semibold">User Login</a>
+        <a href="/user/signup" class="btn btn-blue btn-lg fw-semibold">User Sign Up</a>
+      </div>
+    </div>
+  </div>
+   <!-- Your custom JavaScript file -->
+    <script src="app.js"></script>
+
+</body>
+</html> 

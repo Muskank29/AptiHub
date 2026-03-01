@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Topic - AptiHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- DELETE ACCOUNT (LEFT SIDE - LOWER) -->
+  <div style="
+    position: fixed;
+    bottom: 80px;
+    left: 15px;
+    font-size: 13px;
+  ">
+    <a
+      href="/user/delete-account"
+      style="color:#dc3545; text-decoration:none; cursor:pointer;"
+    >
+      Delete Account
+    </a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container mt-5 text-center">
+    <h1 class="portal-title mb-4">AptiHub</h1>
+    <h3 class="mb-4">Select a Topic</h3>
+
+    <div class="row justify-content-center">
+      <% topics.forEach(topic => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card topic-card shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title"><%= topic %></h5>
+              <a href="/difficulty/<%= topic %>" class="btn btn-dark btn-sm">
+                Choose Difficulty
+              </a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+</body>
+</html>

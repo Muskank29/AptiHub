@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+<h2>Dashboard</h2>
+<div id="topicsContainer"></div>
+<button id="logoutBtn">Logout</button>
+
+<script type="module">
+import { auth, db } from '/js/firebase.js';
+import { signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+
+auth.onAuthStateChanged(user=>{
+  if(!user) window.location.href="/user/login";
+  else loadTopics();
+});
+
+document.getElementById('logoutBtn').addEventListener('click',()=> signOut(auth).then(()=>window.location.href="/user/login"));
+
+async function loadTopics(){
+  const snapshot = await getDocs(collection(db,"questions"));
+  const topicsSet = new Set();
+  snapshot.forEach(doc=>{ if(doc.data().topic) topicsSet.add(doc.data().topic); });
+  const container = document.getElementById('topicsContainer');
+  topicsSet.forEach(topic=>{
+    const a = document.createElement('a');
+    a.href=`/difficulty/${topic}`;
+    a.textContent=topic;
+    container.appendChild(a);
+    container.appendChild(document.createElement('br'));
+  });
+}
+</script>
+</body>
+</html>

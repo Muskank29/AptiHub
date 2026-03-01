@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= topic %> - <%= difficulty %> Questions</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align:center;"><%= topic %> - <%= difficulty %> Level</h1>
+
+    <div id="timer" class="timer">
+      ⏰ Time Left: <span id="timeDisplay">--:--</span>
+    </div>
+
+    
+    <div id="quiz-container" class="quiz-box"></div>
+
+    
+    <div id="feedback"></div>
+
+    
+    <div class="control-buttons">
+      <button id="prevBtn" style="display:none;">Previous</button>
+      <button id="skipBtn">Skip</button>
+      <button id="nextBtn" style="display:none;">Next</button>
+      <button id="submitBtn" style="display:none;">Submit</button>
+    </div>
+  </div>
+
+  
+  <script>
+    window.allQuestions = <%- JSON.stringify(allQuestions) %>;
+  </script>
+  <script src="/js/quiz.js" defer></script>
+</body>
+</html>
+
+
