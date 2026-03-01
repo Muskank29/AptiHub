@@ -10,7 +10,7 @@ admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
 const db = admin.firestore();
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 // ===== Middleware =====
 app.use(express.json());
@@ -362,4 +362,6 @@ app.post("/user/delete-account", async (req, res) => {
 });
 
 // ===== Start Server =====
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+aapp.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
