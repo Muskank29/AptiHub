@@ -6,10 +6,10 @@ require('dotenv').config(); // load .env variables
 const cors = require('cors');
 const admin = require("firebase-admin");
 // const serviceAccount = require("./init/serviceAccountKey.json");
+const serviceAccount = require("./init/serviceAccountKey.json");
+
 admin.initializeApp({
-  credential: admin.credential.cert(
-    JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
-  ),
+  credential: admin.credential.cert(serviceAccount),
 });
 const db = admin.firestore();
 
@@ -366,6 +366,6 @@ app.post("/user/delete-account", async (req, res) => {
 });
 
 // ===== Start Server =====
-aapp.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
