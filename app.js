@@ -6,7 +6,7 @@ require('dotenv').config(); // load .env variables
 const cors = require('cors');
 const admin = require("firebase-admin");
 // const serviceAccount = require("./init/serviceAccountKey.json");
-const serviceAccount = require("./init/serviceAccountKey.json");
+const serviceAccount = require("../init/serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
